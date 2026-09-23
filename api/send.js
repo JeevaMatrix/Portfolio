@@ -1,23 +1,37 @@
 // Vercel serverless function — runs on the server, so the Resend API key
 // never reaches the browser. Deployed automatically when this project is
-// hosted on Vercel (any file in /api becomes an endpoint at /api/<name>).
+// hosted on Vercel (any file in /api at the project root becomes an endpoint at /api/<name>).
 //
 // Required environment variables (set in Vercel → Project → Settings →
-// Environment Variables, not in this file):
+// Environment Variables):
 //   RESEND_API_KEY     – your Resend API key
 //   CONTACT_TO_EMAIL   – the inbox that should receive enquiries
 //   CONTACT_FROM_EMAIL – optional, e.g. "Jeeva Matrix <hello@jeevamatrix.me>"
 //                        (needs a domain verified in Resend). Falls back to
-//                        Resend's shared test address if not set.
+//                        Resend's shared onboarding address if not set.
 
 export default async function handler(req, res) {
+    if (req.method === "OPTIONS") {
+        res.setHeader("Allow", "POST, OPTIONS");
+        return res.status(200).end();
+    }
+
     if (req.method !== "POST") {
-        res.setHeader("Allow", "POST");
+        res.setHeader("Allow", "POST, OPTIONS");
         return res.status(405).json({ error: "Method not allowed" });
     }
 
+    let body = req.body;
+    if (typeof body === "string") {
+        try {
+            body = JSON.parse(body);
+        } catch {
+            body = {};
+        }
+    }
+
     const { name, email, phone, business, need, budget, timeline, description } =
-        req.body || {};
+        body || {};
 
     if (!name || !email || !need || !description) {
         return res.status(400).json({ error: "Missing required fields." });
