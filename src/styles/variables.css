@@ -1,0 +1,50 @@
+:root {
+  /* Color — cooler, higher-contrast, "electric" system.
+     Base is a blue-black (not warm ink), accent is a vivid cobalt signal
+     rather than amber/terracotta, engineering gets its own cyan register. */
+  --void: #05070c;
+  --surface: #0b0f1a;
+  --surface-raised: #121828;
+  --surface-high: #1a2238;
+
+  --edge: #232c42;
+  --edge-soft: #171e30;
+  --edge-strong: #3a4568;
+
+  --text: #f4f6fb;
+  --text-dim: #9aa5c2;
+  --text-faint: #5c6684;
+
+  --signal: #4c6fff;
+  --signal-soft: #8199ff;
+  --signal-dim: rgba(76, 111, 255, 0.14);
+
+  --circuit: #1fe0c3;
+  --circuit-dim: rgba(31, 224, 195, 0.14);
+
+  --danger: #ff6b6b;
+  --success: #33d2a4;
+
+  /* Type */
+  --font-display: "Clash Display", "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Satoshi", "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Scale */
+  --step--1: clamp(0.85rem, 0.82rem + 0.15vw, 0.92rem);
+  --step-0: clamp(1.05rem, 1rem + 0.2vw, 1.15rem);
+  --step-1: clamp(1.25rem, 1.17rem + 0.35vw, 1.45rem);
+  --step-2: clamp(1.55rem, 1.4rem + 0.7vw, 1.95rem);
+  --step-3: clamp(2.1rem, 1.8rem + 1.4vw, 2.85rem);
+  --step-4: clamp(2.8rem, 2.2rem + 2.6vw, 4rem);
+  --step-5: clamp(3.4rem, 2.4rem + 4.4vw, 5.6rem);
+
+  /* Layout */
+  --content-max: 1200px;
+  --content-pad: clamp(1.25rem, 4vw, 3rem);
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+
+  --ease: cubic-bezier(0.16, 0.8, 0.24, 1);
+}
